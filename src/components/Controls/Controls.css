@@ -1,0 +1,80 @@
+/* src/components/Controls/Controls.css */
+.controls {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; /* Stack rows of controls */
+    align-items: center;   /* Center rows horizontally */
+    gap: 10px;             /* Space between control rows */
+  }
+  
+  .control-row {
+    display: flex;
+    flex-wrap: wrap;      /* Allow items to wrap on smaller screens */
+    gap: 10px;            /* Space between items in a row */
+    justify-content: center; /* Center items within a row */
+    align-items: center;  /* Align items vertically in a row */
+  }
+  
+  .control-label {
+    margin-right: 5px;
+    font-weight: bold;
+    vertical-align: middle;
+  }
+  
+  .control-select,
+  .control-toggle input {
+    vertical-align: middle;
+    margin-right: 10px; /* Space after select/checkbox */
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+  
+  .control-toggle {
+    display: inline-flex; /* Align label and checkbox */
+    align-items: center;
+    margin-left: 10px; /* Space before toggle */
+  }
+  
+  .control-button {
+    padding: 8px 15px;
+    font-size: 0.95em;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .control-button:hover:not(:disabled) {
+    background-color: #e0e0e0;
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.1);
+  }
+  
+  .control-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    background-color: #e9ecef;
+  }
+  
+  .control-button.primary {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+  }
+  
+  .control-button.primary:hover:not(:disabled) {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+  
+  .control-button.active {
+    background-color: #28a745; /* Green for active toggles like 'Placing Bomb' */
+    color: white;
+    border-color: #28a745;
+  }
+  .control-button.active:hover:not(:disabled) {
+    background-color: #1e7e34;
+    border-color: #1c7430;
+  }

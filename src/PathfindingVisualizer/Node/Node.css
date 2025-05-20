@@ -1,0 +1,110 @@
+/* src/PathfindingVisualizer/Node/Node.css */
+.node {
+    width: 25px; /* Ancho de cada celda del grid */
+    height: 25px; /* Alto de cada celda del grid */
+    outline: 1px solid rgb(175, 216, 248); /* Borde ligero para las líneas del grid */
+    display: inline-block; /* O flex item si .gridRow usa flex */
+    vertical-align: top; /* Evita espacio extra si se usa inline-block */
+    transition: background-color 0.1s ease-out; /* Transición suave para cambios de color no animados */
+  
+    /* Para iconos de fondo */
+    background-size: 80%; /* Ajusta según tus iconos */
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  /* --- Special Node Visuals (Iconos SVG Placeholder) --- */
+  .node-start {
+    /* background-color: green; */ /* Color de fallback o si no hay imagen */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="10,5 90,50 10,95" style="fill:rgb(34,139,34);stroke:black;stroke-width:2" /></svg>'); /* Triángulo verde apuntando a la derecha */
+  }
+  
+  .node-finish {
+    /* background-color: red; */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" style="fill:rgb(220,20,60);stroke:black;stroke-width:3" /><circle cx="50" cy="50" r="15" style="fill:rgb(255,100,100);stroke:black;stroke-width:2" /></svg>'); /* Diana roja */
+  }
+  
+  .node-bomb {
+    /* background-color: orange; */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="50,5 61,35 98,35 68,57 79,91 50,70 21,91 32,57 2,35 39,35" style="fill:orange;stroke:black;stroke-width:2"/></svg>'); /* Estrella naranja */
+  }
+  
+  .node-wall {
+    background-color: rgb(12, 53, 71); /* Color oscuro para muros */
+    animation-name: wallAnimation;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-out;
+  }
+  
+  @keyframes wallAnimation {
+    0% {
+      transform: scale(0.7);
+      background-color: rgb(50, 80, 100);
+      border-radius: 20%;
+    }
+    100% {
+      transform: scale(1);
+      background-color: rgb(12, 53, 71);
+    }
+  }
+  
+  /* --- Weight Styles (Grayscale Backgrounds) --- */
+  /* Estos pueden ser sobrescritos por visited/path si usan opacidad */
+  .node-weight-2 { background-color: rgb(230, 230, 230); }
+  .node-weight-3 { background-color: rgb(215, 215, 215); }
+  .node-weight-4 { background-color: rgb(200, 200, 200); }
+  .node-weight-5 { background-color: rgb(185, 185, 185); }
+  .node-weight-6 { background-color: rgb(170, 170, 170); }
+  .node-weight-7 { background-color: rgb(155, 155, 155); }
+  .node-weight-8 { background-color: rgb(140, 140, 140); }
+  .node-weight-9 { background-color: rgb(125, 125, 125); }
+  .node-weight-10 { background-color: rgb(110, 110, 110); }
+  
+  
+  /* Base (Static) Styles for Visited/Path - Use transparency */
+  .node-visited {
+    background-color: rgba(0, 190, 218, 0.5); /* Cyan con opacidad */
+  }
+  .node-shortest-path {
+    background-color: rgba(255, 254, 106, 0.65); /* Amarillo con opacidad */
+  }
+  
+  /* --- Animated Styles (If .animation-dynamic is parent) --- */
+  .animation-dynamic .node-visited {
+    background-color: rgba(0, 190, 218, 0.75); /* Menos transparente durante la animación */
+    animation-name: visitedAnimation;
+    animation-duration: 1.0s; /* Duración más corta para la animación de visitado */
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+  }
+  @keyframes visitedAnimation {
+    0% { transform: scale(0.4); background-color: rgba(0, 0, 66, 0.6); border-radius: 100%; }
+    50% { background-color: rgba(17, 104, 217, 0.7); }
+    75% { transform: scale(1.1); background-color: rgba(0, 217, 159, 0.75); }
+    100% { transform: scale(1); background-color: rgba(0, 190, 218, 0.75); }
+  }
+  
+  .animation-dynamic .node-shortest-path {
+    background-color: rgb(255, 254, 106); /* Menos transparente durante la animación */
+    animation-name: shortestPath;
+    animation-duration: 1.2s; /* Duración más corta para la animación de camino */
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+  }
+   @keyframes shortestPath {
+     0% { transform: scale(0.5); background-color: rgb(255, 165, 0, 0.7); } /* Naranja */
+     50% { transform: scale(1.15); background-color: rgb(255, 215, 0, 0.8); } /* Oro */
+     100% { transform: scale(1); background-color: rgb(255, 254, 106); } /* Amarillo claro */
+   }
+  /* --- END Animated Styles --- */
+  
+  /* Ensure path/visited overlays don't hide icons completely */
+  /* This is tricky. One way is to set specific backgrounds for combined classes. */
+  /* Alternatively, the animation itself could be a border or an inner element. */
+  /* For now, the transparency on .node-visited and .node-shortest-path will help. */
+  
+  /* Example of how to handle combined classes if base node has an image */
+  /* .node-start.node-shortest-path { */
+    /* background-color: rgba(255, 254, 106, 0.5); */ /* Path color with transparency */
+    /* Keep the start node icon visible underneath */
+  /* } */

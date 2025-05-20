@@ -1,0 +1,23 @@
+/* src/components/GridDisplay/GridDisplay.css */
+.grid {
+    /* Using CSS Grid for the main grid container */
+    display: inline-grid; /* Allows centering if parent has text-align: center */
+    /* grid-template-columns will be implicitly set by the number of nodes in a row */
+    /* grid-template-rows will be implicitly set by the number of rows */
+    gap: 0px; /* No gap between nodes for a solid grid */
+    border: 1px solid #ccc; /* A light border around the entire grid */
+    margin-top: 10px; /* Space above the grid */
+  
+    /* Prevent text selection when clicking/dragging on the grid */
+    user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer/Edge */
+  }
+  
+  .gridRow {
+    display: flex; /* Each row is a flex container for nodes */
+    /* line-height: 0; was used for older inline-block approaches, not strictly needed with flex */
+  }
+  
+  /* Node styling itself is in PathfindingVisualizer/Node/Node.css */

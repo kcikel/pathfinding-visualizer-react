@@ -1,0 +1,16 @@
+.App {
+  text-align: center; /* Centra contenido inline-block como nuestro visualizador */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 95vh; /* Asegura que tome casi toda la altura */
+  padding-top: 20px; /* Un poco de espacio arriba */
+}
+
+/* Estilos para el título principal si lo ponemos en App.js,
+   o para el h2 dentro de PathfindingVisualizer */
+.App h2 {
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 1.8em;
+}

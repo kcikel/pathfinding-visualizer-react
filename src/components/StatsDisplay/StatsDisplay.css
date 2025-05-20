@@ -1,0 +1,45 @@
+/* src/components/StatsDisplay/StatsDisplay.css */
+.stats-display {
+    margin: 20px auto; /* Centrado y con espacio vertical */
+    padding: 15px 20px;
+    border: 1px solid #d1d1d1;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    max-width: 450px; /* Un ancho máximo para que no se extienda demasiado */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    font-size: 0.95em;
+  }
+  
+  .stats-display h3 {
+    margin-top: 0;
+    text-align: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    color: #333;
+    font-weight: 600;
+  }
+  
+  .stats-grid {
+      display: grid;
+      grid-template-columns: auto 1fr; /* Columna para etiquetas, columna para valores */
+      gap: 8px 15px;                   /* Espacio entre filas y columnas */
+      align-items: center;             /* Alineación vertical de los items */
+  }
+  
+  .stats-grid span:nth-child(odd) { /* Estilo para las etiquetas (impares) */
+      font-weight: 500;
+      color: #555;
+      text-align: right; /* Alinea etiquetas a la derecha para orden */
+  }
+  
+  .stats-grid span:nth-child(even) { /* Estilo para los valores (pares) */
+      font-family: 'Courier New', Courier, monospace; /* Fuente monoespaciada para números */
+      font-weight: bold;
+      color: #222;
+      text-align: left;
+      padding-left: 5px;
+      background-color: #efefef;
+      border-radius: 3px;
+      padding: 2px 5px;
+  }
